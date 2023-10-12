@@ -1,10 +1,10 @@
-import './App.css'
+import { Map } from '@/components/Map';
 
 function App() {
-
   return (
     <>
-    <h1 className='text-red-400'>kru</h1>
+      <Map />
+      <h1 className='text-red-400'>kru</h1>
     </>
   )
 }
