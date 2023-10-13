@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@yandex/ymaps3-hint": "0.0.1",
     "axios": "^1.5.1",
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.5",
@@ -21,10 +22,10 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@types/yandex-maps": "^2.1.31",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "@yandex/ymaps3-types": "^0.0.17",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",

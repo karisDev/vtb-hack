@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@yandex/ymaps3-hint':
+    specifier: 0.0.1
+    version: 0.0.1
   axios:
     specifier: ^1.5.1
     version: 1.5.1
@@ -31,9 +34,6 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.7
     version: 18.2.13
-  '@types/yandex-maps':
-    specifier: ^2.1.31
-    version: 2.1.31
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.0.0
     version: 6.7.5(@typescript-eslint/parser@6.7.5)(eslint@8.51.0)(typescript@5.2.2)
@@ -43,6 +43,9 @@ devDependencies:
   '@vitejs/plugin-react-swc':
     specifier: ^3.3.2
     version: 3.4.0(vite@4.4.11)
+  '@yandex/ymaps3-types':
+    specifier: ^0.0.17
+    version: 0.0.17
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -885,10 +888,6 @@ packages:
     resolution: {integrity: sha512-OxepLK9EuNEIPxWNME+C6WwbRAOOI2o2BaQEGzz5Lu2e4Z5eDnEo+/aVEDMIXywoJitJ7xWd641wrGLZdtwRyw==}
     dev: true
 
-  /@types/yandex-maps@2.1.31:
-    resolution: {integrity: sha512-ezBpV1mrfrZ3k5ieV/IYK1QWcs63wFRVZoo67vksVYgRr7GY/OI/WjdmdZM/MfopkWyqYGHr+DPWye90xZlGcw==}
-    dev: true
-
   /@typescript-eslint/eslint-plugin@6.7.5(@typescript-eslint/parser@6.7.5)(eslint@8.51.0)(typescript@5.2.2):
     resolution: {integrity: sha512-JhtAwTRhOUcP96D0Y6KYnwig/MRQbOoLGXTON2+LlyB/N35SP9j1boai2zzwXb7ypKELXMx3DVk9UTaEq1vHEw==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -1029,6 +1028,17 @@ packages:
       vite: 4.4.11
     transitivePeerDependencies:
       - '@swc/helpers'
+    dev: true
+
+  /@yandex/ymaps3-hint@0.0.1:
+    resolution: {integrity: sha512-3/QcKsigMu1VFdyJKILRl4sv5Y5T24SvkhnZXAY8sSRaulgbM9KGP4k4XnCYdUne1kY2fSeYn3Bva/iXmGGuPQ==}
+    dev: false
+
+  /@yandex/ymaps3-types@0.0.17:
+    resolution: {integrity: sha512-vGUbyxn1X4F68UeA/MKwh7mKb9DrjMInXKC0Mip1gw+Ovm9bRbRuwcUNJqOMv3/XLF8OzGTUiS4IvAduUpv4Jw==}
+    dependencies:
+      '@types/react': 18.2.28
+      '@types/react-dom': 18.2.13
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
