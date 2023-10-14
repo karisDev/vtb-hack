@@ -1,6 +1,11 @@
 from app.config import log
 from app.core.database import init_db
 from app.config import settings
+from app.utils.data_loader import load_atms, load_departments
+from app.models.db_models import Atm, Department
+
+from sqlalchemy.orm import Session
+from sqlalchemy import insert
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,6 +14,23 @@ from fastapi.middleware.cors import CORSMiddleware
 async def startup():
     try:
         init_db()
+
+        from app.core.dependencies import get_db
+        session: Session = next(get_db())
+        atms = load_atms()
+        departments = load_departments()
+
+        session.execute(
+            insert(Atm),
+            atms
+        )
+        session.execute(
+            insert(Department),
+            departments
+        )
+
+        session.commit()
+
     except Exception as ex:
         log.exception(f"failed to preparedb {ex}")
         pass

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Numeric, CheckConstraint, JSON
+from sqlalchemy import Column, Integer, String, Numeric, CheckConstraint, JSON, TEXT
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -8,11 +8,11 @@ class Department(Base):
     __tablename__ = "departments"
     id = Column(Integer, primary_key=True)
     biskvit_id = Column(Integer, unique=True)
-    short_name = Column(String(50), unique=True)
-    address = Column(String(100))
-    city = Column(String(50))
-    scheduleFl = Column(String(100))
-    scheduleJurl = Column(String(100))
+    short_name = Column(TEXT, unique=True)
+    address = Column(TEXT)
+    city = Column(TEXT)
+    scheduleFl = Column(TEXT)
+    scheduleJurl = Column(TEXT)
     latitude = Column(Numeric(10, 8))
     longitude = Column(Numeric(11, 8))
     vip_zone = Column(Integer)
@@ -39,12 +39,11 @@ class Department(Base):
 class Atm(Base):
     __tablename__ = "atms"
     id = Column(Integer, primary_key=True)
-    bank_owner = Column(String(50))
     atm_code = Column(String(50))
-    address = Column(String(100))
-    organization = Column(String(100))
+    address = Column(TEXT)
+    organization = Column(TEXT)
     latitude = Column(Numeric(10, 8))
     longitude = Column(Numeric(11, 8))
     comment = Column(String(100))
-    services = Column(JSON)
-    schedule = Column(String(100))
+    services = Column(TEXT)
+    schedule = Column(TEXT)
