@@ -7,10 +7,9 @@ import { observer } from "mobx-react-lite";
 export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
   return (
     <aside
-      className="absolute left-0 h-full bg-bg-primary shadow-sidebar min-w-[300px] max-w-[400px] w-[30vw] p-4"
+      className="absolute left-0 h-full shadow-sidebar bg-bg-primary shadow-sidebar min-w-[300px] max-w-[400px] w-[30vw] p-4 flex overflow-auto"
       style={{
         zIndex: ELEVATION.Sidebar,
-        boxShadow: "0px 0px 64px 0px rgba(0, 0, 0, 0.16)",
       }}
     >
       {

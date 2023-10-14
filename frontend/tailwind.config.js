@@ -45,8 +45,8 @@ export default {
         },
       },
       boxShadow: {
-        sidebar: "box-shadow: 0px 0px 64px 0px rgba(0, 0, 0, 0.16)",
-        primary: "box-shadow: 0px 0px 36px 0px rgba(0, 56, 255, 0.48)",
+        sidebar: "0px 0px 64px 0px rgba(0, 0, 0, 0.16)",
+        primary: "0px 0px 36px 0px rgba(0, 56, 255, 0.48)",
       },
     },
   },

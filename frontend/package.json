@@ -11,14 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@admiral-ds/react-ui": "^7.0.0",
-    "@yandex/ymaps3-hint": "0.0.1",
     "axios": "^1.5.1",
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.9",
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {

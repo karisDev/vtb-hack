@@ -8,10 +8,11 @@ import FilterSvg from "../assets/filter.svg";
 import { observer } from "mobx-react-lite";
 import { LocationType } from "api/models/Location";
 import { ListCard } from "../ListCard";
+import { Button } from "@/components/ui/Button";
 
 export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 h-full">
       <form
         className="flex gap-3 mb-3"
         onSubmit={(e) => {
@@ -55,14 +56,19 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
       />
       {/* scrollable */}
       <ul className="flex-1 overflow-y-auto gap-6 flex flex-col mt-5">
-        {vm.locations.map((p) => (
-          <ListCard
-            key={p.id}
-            location={p.data?.location}
-            onClick={() => vm.onListSelect(p)}
-          />
-        ))}
+        {vm.locations
+          .filter((v) => v.data?.location.type === vm.locationType)
+          .map((p) => (
+            <ListCard
+              key={p.id}
+              location={p.data?.location}
+              onClick={() => vm.onListSelect(p)}
+            />
+          ))}
       </ul>
+      <Button glow className="mt-auto">
+        Умный подбор
+      </Button>
     </div>
   );
 });

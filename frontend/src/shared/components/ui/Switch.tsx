@@ -16,7 +16,7 @@ export const Switch = <T extends unknown>(p: Props<T>) => {
         <li
           key={p.renderKey(option)}
           className={twMerge(
-            "flex-1 text-center transition-colors duration-200 py-2 cursor-pointer text-text-secondary gap-2 rounded-base flex items-center justify-center",
+            "flex-1 text-center transition-colors duration-200 py-2 cursor-pointer text-text-secondary gap-2 rounded-base flex items-center justify-center text-sm",
             option === p.selectedOption && "bg-primary text-white"
           )}
           onClick={() => p.onChange(option)}
