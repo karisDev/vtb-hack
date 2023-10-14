@@ -1,3 +1,5 @@
+import { PointFeature } from ".";
+
 export const path = [
   [37.745645, 55.71997],
   [37.744057, 55.720534],
@@ -80,4 +82,64 @@ export const path = [
   [37.649003, 55.731133],
   [37.648744, 55.731608],
   [37.648495, 55.732001],
+];
+
+export const points: PointFeature[] = [
+  {
+    type: "Feature",
+    id: "1",
+    geometry: {
+      type: "Point",
+      coordinates: [37.64, 55.78],
+    },
+    data: {
+      hint: "hint1",
+      location: {
+        address: "г. Москва, ул. Тверская, д. 5/6, 1 эт. , холл",
+        name: "Ст. м. «Охотный Ряд»",
+        type: "department",
+        distanceToLocationMeters: 257,
+        load: "low",
+        timeToLocationSeconds: 300,
+      },
+    },
+  },
+  {
+    type: "Feature",
+    id: "2",
+    geometry: {
+      type: "Point",
+      coordinates: [37.64, 55.8],
+    },
+    data: {
+      hint: "hint2",
+      location: {
+        address: "г. Москва, ул. Тверская, д. 5/6, 1 эт. , холл",
+        name: "Ст. м. «Охотный Ряд»",
+        type: "atm",
+        distanceToLocationMeters: 257,
+        load: "high",
+        timeToLocationSeconds: 300,
+      },
+    },
+  },
+  {
+    type: "Feature",
+    id: "3",
+    geometry: {
+      type: "Point",
+      coordinates: [37.64, 55.79],
+    },
+    data: {
+      hint: "hint3",
+      location: {
+        address: "г. Москва, ул. Тверская, д. 5/6, 1 эт. , холл",
+        name: "Ст. м. «Охотный Ряд»",
+        type: "atm",
+        distanceToLocationMeters: 257,
+        load: "medium",
+        timeToLocationSeconds: 300,
+      },
+    },
+  },
 ];

@@ -7,3 +7,7 @@ body,
 #root {
   height: 100%;
 }
+
+* {
+  font-family: VTB Group UI, sans-serif;
+}

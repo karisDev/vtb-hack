@@ -1,1 +1,2 @@
-export { Marker } from "./DefaultMarker";
+export { Marker } from "./Marker";
+export { Cluster } from "./Cluster";

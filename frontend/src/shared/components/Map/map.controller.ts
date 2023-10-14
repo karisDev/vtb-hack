@@ -1,49 +1,30 @@
-// import {makeAutoObservable} from "mobx";
+import { makeAutoObservable } from "mobx";
+import { Common } from "./map-context";
+import { SidebarViewModel } from "../Sidebar/sidebar.vm";
+import { PointFeature } from ".";
+import { points } from "./mock";
+import { ElementRef } from "react";
 
-// export class MapController {
-//   public Map: ymaps3.Map | null = null;
+class mapController {
+  public Map: ElementRef<typeof Common.YMap> | null = null;
+  public locations: PointFeature[] = points;
+  public sidebar: SidebarViewModel = new SidebarViewModel(this);
 
-//   constructor() {
-//     makeAutoObservable(this);
-//   }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-//   init = (elementId: string) => {
-//     if (this.Map) this.Map.destroy();
-    
-//     // @ts-ignore
-//     this.Map = new ymaps.Map(elementId, {
-//       center: [55.76, 37.64],
-//       zoom: 9,
-//       controls: []
-//     });
-//   }
+  public init(map: ElementRef<typeof Common.YMap>) {
+    this.Map = map;
+  }
 
-//   setCenter = (center: number[]) => {
-//     if (this.Map) {
-//       this.Map.setCenter(center);
-//     }
-//   }
+  public onListSelect(location: PointFeature) {
+    console.log("map", this.Map);
+    this.Map?.setLocation({
+      center: location.geometry.coordinates,
+      zoom: 13,
+    });
+  }
+}
 
-//   addMarker = (coords: number[]) => {
-//     if (this.Map) {
-//       ymaps3.templateLayoutFactory.createClass(
-//         '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-//       );
-//       const marker = new ymaps.Placemark(coords, {
-//         hintContent: 'Метка с контентом',
-//         balloonContent: 'А эта — новогодняя',
-//         iconContent: '12'
-//       }, {
-//         preset: 'islands#redStretchyIcon',
-//         draggable: true
-//       });
-//       this.Map.geoObjects.add(marker);
-//     }
-//   }
-
-//   destroy = () => {
-//     if (this.Map) {
-//       this.Map.destroy();
-//     }
-//   }
-// }
+export const MapController = new mapController();
