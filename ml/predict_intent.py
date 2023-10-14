@@ -28,27 +28,27 @@ training_args = TrainingArguments(
     overwrite_output_dir=False,
     # The next line is important to ensure the dataset labels are properly passed to the model
     remove_unused_columns=True,
-    
 )
 
 
 
 class Adapter:
-    def __init__(self):
-        self.prepare_model()
+    def __init__(self, base_path):
+        # self.prepare_model()
+        self.path = base_path
         self.classifier = TextClassificationPipeline(model=Adapter.load_model(self),
                                                      tokenizer=Adapter.load_tokenizer(self))
 
     def load_config(self):
         config = RobertaConfig.from_pretrained(
-            'config.json',  # Напиши тут путь
+            self.path+'config.json',
             num_labels=2,
         )
         return config
 
     def load_model(self):
         model = RobertaModelWithHeads.from_pretrained(
-            'pytorch_model.bin',  # Напиши тут путь!!!
+            self.path+'pytorch_model.bin',
             config=Adapter.load_config(self)
         )
         model.set_active_adapters("vika")
@@ -57,7 +57,11 @@ class Adapter:
     def load_tokenizer(self):
         tokenizer = RobertaTokenizer.from_pretrained('ai-forever/ruRoberta-large')
         return tokenizer
-"""
+
+    def get_response(self, text: str) -> list:
+        label = self.classifier(text)[0]['label']
+        return label
+    """
     def prepare_model(self):
         if not os.path.exists('pytorch_model.bin'):
             response = requests.get('https://7399718814.obj-storage.com/models/pytorch_model.bin')
@@ -81,6 +85,3 @@ class Adapter:
             response = requests.get('https://7399718814.obj-storage.com/models/vocab.json')
             open('vocab.json', "wb").write(response.content)
 """
-    def get_response(self, text: str) -> list:
-        label = self.classifier(text)[0]['label']
-        return label
