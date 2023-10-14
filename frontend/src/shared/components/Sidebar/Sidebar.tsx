@@ -5,7 +5,7 @@ import { FCVM } from "@/utils/vm";
 import { observer } from "mobx-react-lite";
 import useIsMobile from "@/hooks/useWindowSize";
 import ChevronSvg from "./assets/chevron.svg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import useClickOutside from "@/hooks/useClickOutside";
 import MenuSvg from "./assets/menu.svg";
@@ -18,6 +18,10 @@ export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
       vm.hidden = true;
     }
   });
+
+  useEffect(() => {
+    vm.isMobile = isMobile;
+  }, [isMobile]);
 
   return (
     <>

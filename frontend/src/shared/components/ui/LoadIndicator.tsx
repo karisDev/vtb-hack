@@ -6,10 +6,12 @@ export const LoadIndicator = ({
   load,
   className,
   size = 18,
+  disabled,
 }: {
   className?: string;
   load?: LocationLoad;
   size?: number;
+  disabled?: boolean;
 }) => {
   return (
     <LoadSvg
@@ -21,6 +23,7 @@ export const LoadIndicator = ({
         load === "low" && "text-status-ok",
         load === "medium" && "text-status-warning",
         load === "high" && "text-status-error",
+        disabled && "text-white",
         className
       )}
     />

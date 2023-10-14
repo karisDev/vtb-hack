@@ -9,6 +9,7 @@ import { ELEVATION } from "@/constants/elevation";
 import { MapController } from "./map.controller";
 import { HintBase } from "./markers/Hint";
 import useIsMobile from "@/hooks/useWindowSize";
+import LoadFilters from "../LoadFilters";
 
 export const Map = observer(() => {
   const vm = MapController;
@@ -65,11 +66,13 @@ export const Map = observer(() => {
             }}
             style={{ stroke: [{ color: "#f00", width: 4 }] }}
           />
-
           {/* @ts-ignore */}
           <Hint.YMapHint hint={getHint}>
             <HintBase />
           </Hint.YMapHint>
+          <Common.YMapControls position="top right">
+            <LoadFilters vm={vm} />
+          </Common.YMapControls>
           <Common.YMapControls position="left">
             <Sidebar vm={vm.sidebar} />
             {/* <div onClick={zoomSecondPoint}>Test</div> */}

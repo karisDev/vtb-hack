@@ -1,6 +1,7 @@
 import { Common } from "../map-context";
 import { PointFeature } from "..";
 import { LocationIcon } from "@/components/ui";
+import { MapController } from "../map.controller";
 
 const MarkerBase = (feature: PointFeature) => {
   return (
@@ -12,7 +13,12 @@ const MarkerBase = (feature: PointFeature) => {
       }}
       source="clusterer-source"
     >
-      <div className="relative">
+      <div
+        className="relative cursor-pointer"
+        onClick={() => {
+          MapController.onMarkerClick(feature);
+        }}
+      >
         <div className="glow rounded-base bg-primary p-3 text-white">
           <LocationIcon type={feature.data?.location.type} />
         </div>

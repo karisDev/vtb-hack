@@ -9,10 +9,8 @@ const ClusterBase = (coordinates: LngLat, features: PointFeature[]) => {
       coordinates={coordinates}
       source="clusterer-source"
     >
-      <div className="circle">
-        <div className="circle-content">
-          <span className="circle-text">{features.length}</span>
-        </div>
+      <div className="w-10 h-10 bg-white border-2 border-primary rounded-full text-primary flex items-center justify-center">
+        <span className="">{features.length}</span>
       </div>
     </Common.YMapMarker>
   );

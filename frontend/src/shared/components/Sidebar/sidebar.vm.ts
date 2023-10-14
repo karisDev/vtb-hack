@@ -10,6 +10,7 @@ export class SidebarViewModel {
   public search: string = "";
   public locationType: LocationType = "atm";
   public hidden: boolean = false;
+  public isMobile: boolean = false;
   get locations(): PointFeature[] {
     return MapController.locations;
   }
@@ -23,7 +24,6 @@ export class SidebarViewModel {
   public onSelectedLocation(location: PointFeature) {}
 
   public onListSelect(location: PointFeature) {
-    console.log("onListSelect", location);
     this.parentVm.onListSelect(location);
   }
 }
