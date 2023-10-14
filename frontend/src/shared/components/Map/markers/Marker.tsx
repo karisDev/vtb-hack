@@ -1,6 +1,6 @@
-import { Feature } from "@yandex/ymaps3-types/packages/clusterer";
 import { Common } from "../map-context";
 import { PointFeature } from "..";
+import { LocationIcon } from "@/components/ui";
 
 const MarkerBase = (feature: PointFeature) => {
   return (
@@ -8,13 +8,15 @@ const MarkerBase = (feature: PointFeature) => {
       key={feature.id}
       coordinates={feature.geometry.coordinates}
       properties={{
-        hint: feature.data?.hint,
+        hint: feature.data?.location,
       }}
       source="clusterer-source"
     >
-      <section className="bg-red-300">
-        <h1>мало</h1>
-      </section>
+      <div className="relative">
+        <div className="glow rounded-base bg-primary p-3 text-white">
+          <LocationIcon type={feature.data?.location.type} />
+        </div>
+      </div>
     </Common.YMapMarker>
   );
 };

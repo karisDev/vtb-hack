@@ -2,8 +2,8 @@ import { Location } from "api/models/Location";
 import { FC } from "react";
 import { LocationIcon } from "../ui/LocationIcon";
 import { LoadIndicator } from "../ui";
-import ArrowSvg from "./assets/arrow.svg";
-import ClockSvg from "./assets/clock.svg";
+import ArrowSvg from "@/assets/vectors/arrow.svg";
+import ClockSvg from "@/assets/vectors/clock.svg";
 
 interface ListCardProps {
   location?: Location;

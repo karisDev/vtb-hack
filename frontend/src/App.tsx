@@ -1,11 +1,7 @@
+// import { FontsVTBGroup } from "@/components/Fonts";
 import { Map } from "@/components/Map";
 import { useEffect, useState } from "react";
-import { ThemeProvider } from "styled-components";
-import {
-  LIGHT_THEME,
-  FontsVTBGroup,
-  DropdownProvider,
-} from "@admiral-ds/react-ui";
+import { FontsVTBGroup } from "@admiral-ds/react-ui";
 
 function App() {
   const [mapReady, setMapReady] = useState(false);
@@ -17,12 +13,10 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={LIGHT_THEME}>
-      <DropdownProvider>
-        <FontsVTBGroup />
-        {mapReady && <Map />}
-      </DropdownProvider>
-    </ThemeProvider>
+    <>
+      <FontsVTBGroup />
+      {mapReady && <Map />}
+    </>
   );
 }
 

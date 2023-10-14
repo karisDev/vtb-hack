@@ -1,4 +1,4 @@
-import React, { ElementRef, useCallback, useEffect, useRef } from "react";
+import { ElementRef, useCallback, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { LngLat } from "@yandex/ymaps3-types";
 import { Common, Hint, Controls, Cluster as Clusters } from "./map-context";
@@ -7,11 +7,14 @@ import { path } from "./mock";
 import { Sidebar } from "../Sidebar";
 import { ELEVATION } from "@/constants/elevation";
 import { MapController } from "./map.controller";
+import { HintBase } from "./markers/Hint";
+import useIsMobile from "@/hooks/useWindowSize";
 
 export const Map = observer(() => {
   const vm = MapController;
   const mapRef = useRef<ElementRef<typeof Common.YMap>>(null);
   const gridSizedMethod = Clusters.clusterByGrid({ gridSize: 64 });
+  const isMobile = useIsMobile();
 
   const getHint = useCallback((object: any) => object?.properties?.hint, []);
 
@@ -55,18 +58,6 @@ export const Map = observer(() => {
             method={gridSizedMethod}
             features={vm.locations}
           />
-          <Common.YMapMarker
-            coordinates={[37.64, 55.76]}
-            properties={{
-              hint: "testf",
-            }}
-            onClick={console.log}
-          >
-            <section className="bg-red-300">
-              <h1>Точка</h1>
-            </section>
-          </Common.YMapMarker>
-
           <Common.YMapFeature
             geometry={{
               coordinates: path as LngLat[],
@@ -77,28 +68,23 @@ export const Map = observer(() => {
 
           {/* @ts-ignore */}
           <Hint.YMapHint hint={getHint}>
-            <MyHint />
+            <HintBase />
           </Hint.YMapHint>
           <Common.YMapControls position="left">
             <Sidebar vm={vm.sidebar} />
             {/* <div onClick={zoomSecondPoint}>Test</div> */}
           </Common.YMapControls>
 
-          <Common.YMapControls position="right">
-            <Controls.YMapZoomControl />
-            <Controls.YMapGeolocationControl
-              onGeolocatePosition={console.log}
-            />
-          </Common.YMapControls>
+          {!isMobile && (
+            <Common.YMapControls position="right">
+              <Controls.YMapZoomControl />
+              <Controls.YMapGeolocationControl
+                onGeolocatePosition={console.log}
+              />
+            </Common.YMapControls>
+          )}
         </Common.YMap>
       </div>
     </>
   );
 });
-
-function MyHint() {
-  // @ts-ignore
-  const ctx = React.useContext(Hint.YMapHintContext);
-  // @ts-ignore
-  return <div className="my-hint">{ctx && ctx.hint}</div>;
-}

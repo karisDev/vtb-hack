@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/Button";
 
 export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
   return (
-    <div className="flex flex-col flex-1 h-full">
+    <div className="flex flex-col flex-1 h-full w-full">
       <form
         className="flex gap-3 mb-3"
         onSubmit={(e) => {

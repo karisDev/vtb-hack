@@ -4,11 +4,15 @@ import DepartmentSvg from "@/assets/vectors/department.svg";
 import { FC, HTMLProps } from "react";
 
 interface Props extends HTMLProps<SVGElement> {
-  type: LocationType;
+  type?: LocationType;
   size?: number;
 }
 
-export const LocationIcon: FC<Props> = ({ type, size, ...props }) =>
+export const LocationIcon: FC<Props> = ({
+  type = "department",
+  size,
+  ...props
+}) =>
   type === "atm" ? (
     <AtmSvg height={size ?? 18} {...props} />
   ) : (

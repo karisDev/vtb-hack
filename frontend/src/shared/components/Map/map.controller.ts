@@ -19,10 +19,9 @@ class mapController {
   }
 
   public onListSelect(location: PointFeature) {
-    console.log("map", this.Map);
     this.Map?.setLocation({
       center: location.geometry.coordinates,
-      zoom: 13,
+      zoom: 16,
     });
   }
 }

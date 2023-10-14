@@ -2,10 +2,13 @@
 export default {
   content: ["./src/**/*.{html,tsx}"],
   theme: {
-    borderRadius: {
-      base: "14px",
+    screens: {
+      mobile: "768px",
     },
     extend: {
+      borderRadius: {
+        base: "14px",
+      },
       colors: {
         primary: "#0062FF",
         status: {

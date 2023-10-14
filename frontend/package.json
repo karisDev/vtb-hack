@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@admiral-ds/react-ui": "^7.0.0",
     "axios": "^1.5.1",
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.5",

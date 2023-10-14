@@ -9,6 +9,7 @@ export class SidebarViewModel {
   public view: SidebarView = "list";
   public search: string = "";
   public locationType: LocationType = "atm";
+  public hidden: boolean = false;
   get locations(): PointFeature[] {
     return MapController.locations;
   }
