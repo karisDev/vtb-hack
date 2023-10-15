@@ -20,12 +20,17 @@ export class FiltersController {
     this.filter();
   }
 
-  private filter() {
+  public filter() {
     this.parentVm.locations = this.parentVm.allLocations.filter(
       (location) =>
         (this.load === null || location.data?.location.load === this.load) &&
-        (this.locationType === "atm" ||
-          location.data?.location.type === this.locationType)
+        location.data?.location.type === this.locationType
     );
+  }
+
+  public reset() {
+    this.load = null;
+    this.locationType = "atm";
+    this.filter();
   }
 }

@@ -8,11 +8,16 @@ import ClockSvg from "@/assets/vectors/clock.svg";
 interface ListCardProps {
   location?: Location;
   onClick: () => void;
+  style: React.CSSProperties;
 }
 
 export const ListCard: FC<ListCardProps> = (p) => {
   return (
-    <li className="flex items-center cursor-pointer" onClick={p.onClick}>
+    <li
+      className="flex items-center cursor-pointer"
+      onClick={p.onClick}
+      style={p.style}
+    >
       <figure className="flex items-center justify-center bg-primary rounded-base p-3 text-white">
         <LocationIcon
           type={p.location?.type ?? "department"}
@@ -26,10 +31,16 @@ export const ListCard: FC<ListCardProps> = (p) => {
           {p.location?.address}
         </p>
         <div className="flex items-center gap-1 text-text-primary font-light text-xs mt-2">
-          <ArrowSvg className="w-3 h-3" />
-          <p>{p.location?.distanceToLocationMeters} метров</p>
-          <ClockSvg className="w-3 h-3 ml-4" />
-          <p>{p.location?.timeToLocationSeconds} минут</p>
+          {p.location?.distanceToLocationMeters && (
+            <>
+              <ArrowSvg className="w-3 h-3" />
+              <p className="mr-4">
+                {p.location.distanceToLocationMeters} метров
+              </p>
+            </>
+          )}
+          <ClockSvg className="w-3 h-3" />
+          <p>{p.location?.timeToLocationSeconds} Открыто</p>
         </div>
       </div>
       <LoadIndicator className="ml-auto" load={p.location?.load} size={18} />

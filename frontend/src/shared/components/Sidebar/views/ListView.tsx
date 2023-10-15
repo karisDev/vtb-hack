@@ -9,10 +9,28 @@ import { observer } from "mobx-react-lite";
 import { LocationType } from "api/models/Location";
 import { ListCard } from "../ListCard";
 import { Button } from "@/components/ui/Button";
+import { useEffect, useRef, useState } from "react";
+import { FixedSizeList } from "react-window";
 
 export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
+  const listRef = useRef<HTMLUListElement>(null);
+  const [containerHeight, setContainerHeight] = useState(0);
+
+  useEffect(() => {
+    if (!listRef.current) return;
+    // on resize
+    const resizeObserver = new ResizeObserver((entries) => {
+      const { height } = entries[0].contentRect;
+      setContainerHeight(height);
+    });
+    resizeObserver.observe(listRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
   return (
-    <div className="flex flex-col flex-1 h-full w-full">
+    <div className="flex flex-col flex-1 h-full w-full pb-16 mobile:pb-0">
       <form
         className="flex gap-3 mb-3"
         onSubmit={(e) => {
@@ -38,8 +56,8 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
       <Switch<LocationType>
         renderKey={(v) => v}
         options={["atm", "department"]}
-        selectedOption={vm.locationType}
-        onChange={(v) => (vm.locationType = v)}
+        selectedOption={vm.parentVm.filters.locationType}
+        onChange={(v) => vm.parentVm.filters.setType(v)}
         render={(v) =>
           v === "atm" ? (
             <>
@@ -54,17 +72,28 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
           )
         }
       />
-      {/* scrollable */}
-      <ul className="flex-1 overflow-y-auto gap-6 flex flex-col mt-5">
-        {vm.locations
-          .filter((v) => v.data?.location.type === vm.locationType)
-          .map((p) => (
+      <ul
+        ref={listRef}
+        className="flex-1 gap-6 flex flex-col mt-5 overflow-y-auto"
+        style={{
+          scrollbarWidth: "thin",
+        }}
+      >
+        <FixedSizeList
+          height={containerHeight}
+          width="100%"
+          itemSize={100}
+          itemCount={vm.locations.length}
+        >
+          {({ index, style }) => (
             <ListCard
-              key={p.id}
-              location={p.data?.location}
-              onClick={() => vm.onListSelect(p)}
+              key={vm.locations[index].id}
+              location={vm.locations[index].data?.location}
+              onClick={() => vm.onListSelect(vm.locations[index])}
+              style={style}
             />
-          ))}
+          )}
+        </FixedSizeList>
       </ul>
       <Button glow className="mt-auto">
         Умный подбор

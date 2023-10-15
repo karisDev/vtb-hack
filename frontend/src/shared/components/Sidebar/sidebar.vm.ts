@@ -12,7 +12,14 @@ export class SidebarViewModel {
   public hidden: boolean = false;
   public isMobile: boolean = false;
   get locations(): PointFeature[] {
-    return MapController.locations;
+    return MapController.locations.filter((v) => {
+      return (
+        v.data?.location.address
+          .toLowerCase()
+          .includes(this.search.toLowerCase()) ||
+        v.data?.location.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    });
   }
 
   constructor(public parentVm: typeof MapController) {
