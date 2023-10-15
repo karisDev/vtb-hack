@@ -61,8 +61,6 @@ class mapController {
   }
 
   public onListSelect(location: PointFeature) {
-    this.setMapLocation(location);
-
     if (this.userGeo) {
       getPath(
         location.geometry.coordinates[1],
@@ -81,10 +79,13 @@ class mapController {
               this.lineString.at(-1)![1],
             ],
             easing: "ease-in-out",
+            duration: 500,
             zoom: 12,
           });
         }, 0);
       });
+    } else {
+      this.setMapLocation(location);
     }
     // if (this.sidebar.isMobile) {
     //   this.sidebar.hidden = true;
@@ -92,7 +93,6 @@ class mapController {
   }
 
   public onMarkerClick(location: PointFeature) {
-    this.setMapLocation(location);
     this.sidebar.onSelectedLocation(location);
 
     if (this.userGeo) {
@@ -112,10 +112,13 @@ class mapController {
               this.lineString.at(-1)![1],
             ],
             easing: "ease-in-out",
+            duration: 500,
             zoom: 12,
           });
         }, 0);
       });
+    } else {
+      this.setMapLocation(location);
     }
   }
 }

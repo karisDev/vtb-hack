@@ -30,6 +30,7 @@ const SmartSearch: FCVM<SidebarViewModel> = observer(({ vm }) => {
           onClick={(e) => {
             e.stopPropagation();
             vm.view = "list";
+            vm.parentVm.lineString = [];
           }}
         >
           <CloseSvg />

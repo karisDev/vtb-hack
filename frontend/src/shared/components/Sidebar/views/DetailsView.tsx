@@ -77,6 +77,7 @@ const DetailsView: FCVM<SidebarViewModel> = observer(({ vm }) => {
           onClick={(e) => {
             e.stopPropagation();
             vm.view = "list";
+            vm.parentVm.lineString = [];
           }}
         >
           <CloseSvg />
