@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# VTB MORETECH 5.0 MISIS IWCD back-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Добро пожаловать в репозиторий нашего проекта от команды MISIS IWCD! Этот проект был создан с использованием React и TypeScript, что обеспечивает нам современный и типобезопасный подход к разработке. Мы также используем Vite для быстрой сборки и разработки, а также Yandex Maps API для интеграции с картами.
 
-Currently, two official plugins are available:
+## Основные особенности:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Библиотека для создания пользовательских интерфейсов.
+- **TypeScript**: Строго типизированный язык программирования на основе JavaScript.
+- **Vite**: Современный инструмент сборки, предоставляющий быстрое развертывание и обновление.
+- **Yandex Maps API**: API для интеграции с картами от Yandex.
 
-## Expanding the ESLint configuration
+## Как запустить
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Для запуска проекта удостоверьтесь, что у вас установлен Docker и Docker Compose, а затем выполните следующие шаги:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Клонировать репозиторий:
+```
+git clone https://github.com/karisDev/vtb-hack
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Перейдите в директорию проекта:
+```
+cd frontend
+```
+
+3. Запустите проект с помощью Docker Compose:
+```
+docker-compose up
+```
+
+После выполнения этих команд, ваш frontend проект будет доступен по адресу `http://localhost:5173` (или другой порт, если вы его изменили).
+
+---
+
+Спасибо за интерес к нашему решению! Надеемся, он окажется полезным для вас и вашего бизнеса.
