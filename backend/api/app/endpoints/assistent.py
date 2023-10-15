@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends
-from fastapi.responses import HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 
 from app.config import log
