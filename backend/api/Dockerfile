@@ -13,25 +13,20 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
         libglib2.0-0
 
 # Upgrade pip
-RUN python3 -m pip install --upgrade pip
+RUN python3.10 -m pip install --upgrade pip
 
 # Install PyTorch, torchvision and adapter-transformers
-RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
+RUN python3.10 -m pip install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
 
-RUN pip3 install git+https://github.com/Adapter-Hub/adapter-transformers.git
+RUN python3.10 -m pip install git+https://github.com/Adapter-Hub/adapter-transformers.git
 
 WORKDIR /backend
 
 COPY requirements.txt ./
-RUN pip install -r requirements.txt
-RUN pip3 install torch torchvision torchaudio -f https://download.pytorch.org/whl/cu111/torch_stable.html
-
-RUN pip3 install git+https://github.com/Adapter-Hub/adapter-transformers.git
-
-
+RUN python3.10 -m pip install -r requirements.txt
 
 ENV PYTHONPATH="."
 
 # Run your app
 COPY . .
-CMD [ "python3", "-m", "app" ]
+CMD [ "python3.10", "-m", "app" ]
