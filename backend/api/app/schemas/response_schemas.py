@@ -47,6 +47,10 @@ class AdditionalInfo(BaseModel):
     schedule: Dict
 
 
+class SelectedOne(BaseModel):
+    id: str
+
+
 class Route(BaseModel):
     time: float
     distance: float

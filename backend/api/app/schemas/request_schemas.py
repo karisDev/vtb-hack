@@ -33,10 +33,6 @@ class AtmCurrency(Enum):
 class SelectAtm(BaseModel):
     latitude: float
     longitude: float
-    service: AtmServices
-    currency: AtmCurrency
-    is_visuallyImpaired: bool
-    is_immobile: bool
 
 
 

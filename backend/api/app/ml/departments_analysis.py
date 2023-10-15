@@ -109,7 +109,7 @@ def main_departments(path_to_df: str, cur_location: list, operation: str, is_vip
     df = load_df(path_to_df)
     df = get_new_info(df)
     print(df)
-    df = filter_open_now(df)
+    # df = filter_open_now(df)
     df = predict_departments(df, cur_location, operation, is_vip, is_person, is_juridical, is_disabled)
     top_5_df = predict_top_5(df, cur_location[0], cur_location[1])
     top_5_df.to_csv('top_5_departments.csv')
