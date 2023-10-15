@@ -20,3 +20,22 @@ export const getSmartSearch = async (
   const data = (await response.json()) as SmartSearch;
   return data;
 };
+
+export const askVika = async (
+  text: string,
+  longitude: number,
+  latitude: number
+) => {
+  const response = await fetch(
+    API_URL +
+      `/api/assistent?text=${text}&longitude=${longitude}&latitude=${latitude}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = (await response.json()) as SmartSearch;
+  return data;
+};

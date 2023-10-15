@@ -7,21 +7,27 @@ import VtbLogo from "./assets/send-button.svg";
 
 const VikaTextField: FCVM<VikaController> = observer(({ vm }) => {
   return (
-    <div
-      className="position absolute bottom-3 right-3 flex items-center"
+    <form
+      className="position absolute bottom-3 right-3 flex items-center gap-3"
       style={{
         zIndex: ELEVATION.Sidebar,
       }}
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        vm.sendTextMessage();
+      }}
     >
       <Input
+        className="glow rounded-base w-[300px]"
         value={vm.searchText}
         placeholder="Написать ассистенту"
         onChange={(v) => (vm.searchText = v)}
       />
-      <div className="bg-primary rounded-base">
-        <VtbLogo />
-      </div>
-    </div>
+      <button className="bg-primary rounded-base p-3">
+        <VtbLogo height={28} width={28} />
+      </button>
+    </form>
   );
 });
 

@@ -13,8 +13,13 @@ import CloseSvg from "../assets/close.svg";
 import AtmSvg from "@/assets/vectors/atm.svg";
 import DepartmentSvg from "@/assets/vectors/department.svg";
 import { LocationType } from "api/models/Location";
+import { useEffect } from "react";
 
 const SmartSearch: FCVM<SidebarViewModel> = observer(({ vm }) => {
+  useEffect(() => {
+    vm.smartSearch.service = "open_deposit";
+  }, []);
+
   return (
     <div className="flex flex-col flex-1 h-full w-full">
       <div className="flex justify-between pr-1 mb-4">
