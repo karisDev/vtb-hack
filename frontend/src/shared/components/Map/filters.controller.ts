@@ -17,6 +17,7 @@ export class FiltersController {
 
   public setType(type: LocationType) {
     this.locationType = type;
+    this.parentVm.sidebar.smartSearch.type = type;
     this.filter();
   }
 

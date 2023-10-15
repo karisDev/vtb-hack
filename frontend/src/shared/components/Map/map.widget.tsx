@@ -10,6 +10,7 @@ import { MapController } from "./map.controller";
 import { HintBase } from "./markers/Hint";
 import useIsMobile from "@/hooks/useWindowSize";
 import LoadFilters from "../LoadFilters";
+import VikaTextField from "../Vika/VikaTextField";
 
 export const Map = observer(() => {
   const vm = MapController;
@@ -73,6 +74,9 @@ export const Map = observer(() => {
           </Hint.YMapHint>
           <Common.YMapControls position="top right">
             <LoadFilters vm={vm} />
+          </Common.YMapControls>
+          <Common.YMapControls position="bottom right">
+            <VikaTextField vm={vm.vika} />
           </Common.YMapControls>
           <Common.YMapControls position="left">
             <Sidebar vm={vm.sidebar} />

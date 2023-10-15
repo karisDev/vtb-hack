@@ -96,7 +96,11 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
           )}
         </FixedSizeList>
       </ul>
-      <Button glow className="mt-auto">
+      <Button
+        glow
+        className="mt-auto"
+        onClick={() => (vm.view = "smart_search")}
+      >
         Умный подбор
       </Button>
     </div>
