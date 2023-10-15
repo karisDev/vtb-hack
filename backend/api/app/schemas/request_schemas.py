@@ -39,10 +39,6 @@ class SelectAtm(BaseModel):
     is_immobile: bool
 
 
-class ClientType(Enum):
-    individual = "individual"
-    juridical = "juridical"
-
 
 class DepartmentServices(Enum):
     insurance = "insurance"
@@ -60,9 +56,10 @@ class DepartmentServices(Enum):
 class SelectDepartment(BaseModel):
     latitude: float
     longitude: float
-    is_immobile: bool
+    is_disabled: bool
+    is_person: bool
+    is_juridical: bool
     is_prime: bool
-    client_type: ClientType
     service: DepartmentServices
 
 
