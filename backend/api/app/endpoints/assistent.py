@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.get("/assistent", response_model=response_schemas.SelectedOne)
 async def assistent_work(text_prompt: str, latitude: float, longitude: float):
-    adapter = Adapter()
+    adapter = Adapter('/backend/model/VIKA_model/')
     intent = adapter.get_response(text_prompt)
     if intent in ["take_money", "give_money"]:
         top_atms = main_bancomats(
