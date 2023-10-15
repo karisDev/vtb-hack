@@ -1,26 +1,15 @@
 FROM python:3.11
 
-# Configure Poetry
-ENV POETRY_VERSION=1.4.2
-ENV POETRY_HOME=/opt/poetry
-ENV POETRY_VENV=/opt/poetry-venv
-ENV POETRY_CACHE_DIR=/opt/.cache
+WORKDIR /backend
 
-# Install poetry separated from system interpreter
-RUN python3 -m venv $POETRY_VENV \
-    && $POETRY_VENV/bin/pip install -U pip setuptools \
-    && $POETRY_VENV/bin/pip install poetry==${POETRY_VERSION}
-
-# Add `poetry` to PATH
-ENV PATH="${PATH}:${POETRY_VENV}/bin"
-
-WORKDIR /app
-
+RUN python3 -m venv venv
+RUN . venv/bin/activate
 # Install dependencies
-COPY poetry.lock pyproject.toml ./
-RUN poetry install
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
 
-RUN mkdir logs/
+ENV PYTHONPATH="."
+
 # Run your app
 COPY . .
-CMD [ "poetry", "run", "python", "-m", "app" ]
+CMD [ "python3", "-m", "app" ]
