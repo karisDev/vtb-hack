@@ -3,7 +3,7 @@ version: "3"
 # volumes:
 #   db:
 #   logs:
-
+name: vtb_backend
 services:
   db:
     image: postgres:14
