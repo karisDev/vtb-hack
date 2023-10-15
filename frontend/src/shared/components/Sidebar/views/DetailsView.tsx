@@ -42,11 +42,11 @@ const ContactGroup: FCVM<SidebarViewModel> = ({ vm }) => (
   </div>
 );
 
-const Header = ({ children }: { children: React.ReactNode }) => (
+export const Header = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-xl font-medium">{children}</h2>
 );
 
-const Attribute = ({
+export const Attribute = ({
   icon,
   text,
 }: {
@@ -59,7 +59,7 @@ const Attribute = ({
   </div>
 );
 
-const Separator = () => (
+export const Separator = () => (
   <span className="w-full my-6 h-px bg-text-secondary/30" />
 );
 

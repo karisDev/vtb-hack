@@ -11,6 +11,7 @@ import useClickOutside from "@/hooks/useClickOutside";
 import MenuSvg from "./assets/menu.svg";
 import CloseSvg from "./assets/close.svg";
 import DetailsView from "./views/DetailsView";
+import SmartSearch from "./views/SmartSearch";
 
 export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
   const isMobile = useIsMobile();
@@ -68,6 +69,7 @@ export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
           {
             list: <ListView vm={vm} />,
             details: <DetailsView vm={vm} />,
+            smart_search: <SmartSearch vm={vm} />,
           }[vm.view]
         }
       </aside>
