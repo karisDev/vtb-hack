@@ -26,15 +26,15 @@ async def assistent_work(text_prompt: str, latitude: float, longitude: float):
 
         return response_schemas.SelectedOne(id=str(selected_atm))
     elif intent == "trash":
-        return HTTPException(status_code=422, detail="Not found")
+        raise HTTPException(status_code=422, detail="Entered trash")
     else:
         top_departments = main_departments(
             path_to_df="app/data/departments.csv",
             cur_location=[latitude, longitude],
             operation=intent,
-            is_vip=False,
+            is_vip=True,
             is_person=True,
-            is_juridical=False,
+            is_juridical=True,
             is_disabled=False,
         )
 
@@ -47,4 +47,3 @@ async def assistent_work(text_prompt: str, latitude: float, longitude: float):
         selected_department = predict_1_department(top_departments)
 
         return response_schemas.SelectedOne(id=str(selected_department))
-
