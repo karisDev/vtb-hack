@@ -24,11 +24,15 @@ def add_routes(departments: List[Dict], latitude: float, longitude: float) -> Li
     for department in departments:
         department.update(
             calculate_route(
-                department["latitude"],
-                department["longitude"],
+                department["location"][0],
+                department["location"][1],
                 latitude,
                 longitude,
             )
         )
+        del department["location"]
+        del department["points"]
+        del department["distance"]
+        department["time"] = department["time"] / 1000
 
     return departments

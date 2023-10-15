@@ -1,5 +1,5 @@
-import pandas
-import numpy
+import pandas as pd
+import numpy as np
 
 def calculate_distance(lat1, lon1, lat2, lon2):
     return ((lat2 - lat1)**2 + (lon2 - lon1)**2)**0.5
@@ -51,4 +51,4 @@ def predict_1_bancomat(dists_time: list) -> int:
         result_coeffs.append(equation(time_list_norm[i], dists_time[i]['time_in_dept_norm'], a_coef=a_coef(time_list)))
     max_index = result_coeffs.index(max(result_coeffs))
     print(result_coeffs)
-    return dists_time[max_index]['id']
+    return dists_time[max_index]['atm_code']
