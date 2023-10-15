@@ -13,6 +13,9 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
         libglib2.0-0
 
 # Upgrade pip
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python3.10 get-pip.py && \
+    rm get-pip.py
 RUN python3.10 -m venv venv
 RUN . venv/bin/activate
 RUN pip install --upgrade pip
