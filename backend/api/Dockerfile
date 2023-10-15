@@ -3,6 +3,7 @@ FROM nvidia/cuda:12.0.0-base-ubuntu20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install system dependencies
+RUN apt-get update && apt install software-properties-common -y
 RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y \
