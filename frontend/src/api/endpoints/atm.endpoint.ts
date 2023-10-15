@@ -1,5 +1,6 @@
 import {
   Atm,
+  AtmDetails,
   AtmItemDto,
   AtmListItemDto,
   convertDto,
@@ -13,8 +14,8 @@ export const getAtmList = async (): Promise<Atm[]> => {
   return data.map(convertDto);
 };
 
-export const getAtm = async (id: string): Promise<Atm> => {
-  const response = await fetch(API_URL + `/api/atm/additional?id=${id}`);
+export const getAtm = async (id: string): Promise<AtmDetails> => {
+  const response = await fetch(API_URL + `/api/atm_additional?id=${id}`);
   const data = (await response.json()) as AtmItemDto;
-  return convertDto(data);
+  return data;
 };

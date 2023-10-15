@@ -15,6 +15,9 @@ const MarkerBase = (feature: PointFeature) => {
     >
       <div
         className="relative cursor-pointer"
+        style={{
+          transform: "translate(-50%, -100%)",
+        }}
         onClick={() => {
           MapController.onMarkerClick(feature);
         }}

@@ -14,8 +14,11 @@ interface ListCardProps {
 export const ListCard: FC<ListCardProps> = (p) => {
   return (
     <li
-      className="flex items-center cursor-pointer"
-      onClick={p.onClick}
+      className="flex items-center cursor-pointer mb-2"
+      onClick={(e) => {
+        e.stopPropagation();
+        p.onClick();
+      }}
       style={p.style}
     >
       <figure className="flex items-center justify-center bg-primary rounded-base p-3 text-white">

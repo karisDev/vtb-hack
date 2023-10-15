@@ -60,10 +60,11 @@ class mapController {
 
   public onListSelect(location: PointFeature) {
     this.setMapLocation(location);
+    console.log("set");
 
-    if (this.sidebar.isMobile) {
-      this.sidebar.hidden = true;
-    }
+    // if (this.sidebar.isMobile) {
+    //   this.sidebar.hidden = true;
+    // }
   }
 
   public onMarkerClick(location: PointFeature) {

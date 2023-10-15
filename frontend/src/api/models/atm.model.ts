@@ -50,8 +50,14 @@ export type AtmListItemDto = Omit<AtmItemDto, "services" | "schedule"> & {
 export interface Atm extends GenericAttributes {
   type: "atm";
 
+  comment: string;
   services: Services | null;
   schedule: Schedule | null;
+}
+
+export interface AtmDetails {
+  services: Services;
+  schedule: Schedule;
 }
 
 export const convertDto = (v: AtmItemDto | AtmListItemDto): Atm => {
@@ -61,6 +67,7 @@ export const convertDto = (v: AtmItemDto | AtmListItemDto): Atm => {
     address: v.address,
     position: [v.longitude, v.latitude] as LngLat,
     name: v.organization,
+    comment: v.comment,
     services: v.services,
     schedule: v.schedule,
     load: convertLoad(v.time_in_department),

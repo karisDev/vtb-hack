@@ -29,8 +29,9 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
       resizeObserver.disconnect();
     };
   }, []);
+
   return (
-    <div className="flex flex-col flex-1 h-full w-full pb-16 mobile:pb-0">
+    <div className="flex flex-col flex-1 h-full w-full">
       <form
         className="flex gap-3 mb-3"
         onSubmit={(e) => {
@@ -82,7 +83,7 @@ export const ListView: FCVM<SidebarViewModel> = observer(({ vm }) => {
         <FixedSizeList
           height={containerHeight}
           width="100%"
-          itemSize={100}
+          itemSize={72}
           itemCount={vm.locations.length}
         >
           {({ index, style }) => (

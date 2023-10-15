@@ -10,6 +10,7 @@ import { twMerge } from "tailwind-merge";
 import useClickOutside from "@/hooks/useClickOutside";
 import MenuSvg from "./assets/menu.svg";
 import CloseSvg from "./assets/close.svg";
+import DetailsView from "./views/DetailsView";
 
 export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
   const isMobile = useIsMobile();
@@ -51,13 +52,13 @@ export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
             : `translateX(${vm.hidden ? "-100%" : "0"})`,
         }}
       >
-        {isMobile && (
-          <div className="flex justify-between items-center mb-4 pr-1">
+        {isMobile && vm.view === "list" && (
+          <div className="flex justify-between mb-4 pr-1">
             <h2 className="text-2xl font-bold">Список точек</h2>
             <button
-              className="text-text-secondary w-6 h-6"
+              className="text-text-secondary w-6 h-6 mt-1"
               type="button"
-              onClick={() => (vm.hidden = !vm.hidden)}
+              onClick={(e) => (vm.hidden = !vm.hidden)}
             >
               <CloseSvg />
             </button>
@@ -66,6 +67,7 @@ export const Sidebar: FCVM<SidebarViewModel> = observer(({ vm }) => {
         {
           {
             list: <ListView vm={vm} />,
+            details: <DetailsView vm={vm} />,
           }[vm.view]
         }
       </aside>
