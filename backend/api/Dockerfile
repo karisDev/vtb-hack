@@ -17,8 +17,8 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3.10 get-pip.py && \
     rm get-pip.py
-RUN python3.10 -m venv venv
-RUN . venv/bin/activate
+# RUN python3.10 -m venv venv
+# RUN . venv/bin/activate
 RUN pip install --upgrade pip
 
 # Install PyTorch, torchvision and adapter-transformers
