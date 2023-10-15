@@ -18,9 +18,11 @@ export class VikaController {
     }
     await askVika(this.searchText, lon, lat).then((data) => {
       if (data.id) {
-        const location = MapController.locations.find((v) => v.id === data.id);
-
+        const location = MapController.allLocations.find(
+          (v) => v.id === data.id
+        );
         if (location) {
+          this.parentVm.filters.setType(location.data!.location.type);
           this.parentVm.onMarkerClick(location);
         }
       }

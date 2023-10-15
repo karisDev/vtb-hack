@@ -76,14 +76,14 @@ class mapController {
           this.Map!.setLocation({
             center: [
               !this.sidebar.isMobile && !this.sidebar.hidden
-                ? this.lineString.at(-1)[0] - 0.005
-                : this.lineString.at(-1)[0],
-              this.lineString.at(-1)[1],
+                ? this.lineString.at(-1)![0] - 0.005
+                : this.lineString.at(-1)![0],
+              this.lineString.at(-1)![1],
             ],
             easing: "ease-in-out",
             zoom: 12,
           });
-        }, 10);
+        }, 0);
       });
     }
     // if (this.sidebar.isMobile) {
@@ -107,14 +107,14 @@ class mapController {
           this.Map!.setLocation({
             center: [
               !this.sidebar.isMobile && !this.sidebar.hidden
-                ? this.lineString.at(-1)[0] - 0.005
-                : this.lineString.at(-1)[0],
-              this.lineString.at(-1)[1],
+                ? this.lineString.at(-1)![0] - 0.005
+                : this.lineString.at(-1)![0],
+              this.lineString.at(-1)![1],
             ],
             easing: "ease-in-out",
             zoom: 12,
           });
-        }, 10);
+        }, 0);
       });
     }
   }
