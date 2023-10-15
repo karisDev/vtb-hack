@@ -3,12 +3,13 @@ FROM nvidia/cuda:12.0.0-base-ubuntu20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install system dependencies
-RUN apt-get update && \
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
     apt-get install -y \
         git \
-        python3-pip \
-        python3-dev \
-        python3-opencv \
+        python3.10-pip \
+        python3.10-dev \
+        python3.10-opencv \
         libglib2.0-0
 
 # Upgrade pip
