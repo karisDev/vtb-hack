@@ -1,0 +1,6 @@
+version: '3'
+name: vtb_front
+services:
+  web:
+    build: .
+    
