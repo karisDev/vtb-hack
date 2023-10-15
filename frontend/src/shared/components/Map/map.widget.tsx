@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { LngLat } from "@yandex/ymaps3-types";
 import { Common, Hint, Controls, Cluster as Clusters } from "./map-context";
 import { Cluster, Marker } from "./markers";
-import { path } from "./mock";
 import { Sidebar } from "../Sidebar";
 import { ELEVATION } from "@/constants/elevation";
 import { MapController } from "./map.controller";
@@ -63,10 +62,10 @@ export const Map = observer(() => {
           />
           <Common.YMapFeature
             geometry={{
-              coordinates: path as LngLat[],
+              coordinates: vm.lineString,
               type: "LineString",
             }}
-            style={{ stroke: [{ color: "#f00", width: 4 }] }}
+            style={{ stroke: [{ color: "#00a", width: 4 }] }}
           />
           {/* @ts-ignore */}
           <Hint.YMapHint hint={getHint}>

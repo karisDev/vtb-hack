@@ -14,15 +14,19 @@ const VikaTextField: FCVM<VikaController> = observer(({ vm }) => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
+        // get vika-text-field
+        const input = document.getElementById(
+          "vika-text-field"
+        ) as HTMLInputElement;
+        vm.searchText = input.value;
 
         vm.sendTextMessage();
       }}
     >
       <Input
+        id="vika-text-field"
         className="glow rounded-base w-[300px]"
-        value={vm.searchText}
         placeholder="Написать ассистенту"
-        onChange={(v) => (vm.searchText = v)}
       />
       <button className="bg-primary rounded-base p-3">
         <VtbLogo height={28} width={28} />

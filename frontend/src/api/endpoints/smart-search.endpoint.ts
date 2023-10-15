@@ -28,7 +28,7 @@ export const askVika = async (
 ) => {
   const response = await fetch(
     API_URL +
-      `/api/assistent?text=${text}&longitude=${longitude}&latitude=${latitude}`,
+      `/api/assistent?text_prompt=${text}&longitude=${longitude}&latitude=${latitude}`,
     {
       method: "GET",
       headers: {

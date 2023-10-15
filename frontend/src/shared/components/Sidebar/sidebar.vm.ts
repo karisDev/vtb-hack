@@ -24,7 +24,7 @@ type SmartSearchProps =
     };
 
 export class SidebarViewModel {
-  public view: SidebarView = "smart_search";
+  public view: SidebarView = "list";
   public search: string = "";
   public locationType: LocationType = "atm";
   public hidden: boolean = false;

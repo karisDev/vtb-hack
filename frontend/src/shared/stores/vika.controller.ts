@@ -2,7 +2,7 @@ import { MapController } from "@/components/Map/map.controller";
 import { askVika } from "api/endpoints/smart-search.endpoint";
 
 export class VikaController {
-  public searchText: string = "";
+  public searchText: string = "test";
   constructor(public parentVm: typeof MapController) {}
 
   public onVoiceCommand(command: string[]) {
