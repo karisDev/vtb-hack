@@ -10,7 +10,8 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
         git \
         python3.10 \
         python3.10-distutils \
-        libglib2.0-0
+        libglib2.0-0 \
+        curl
 
 # Upgrade pip
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
