@@ -9,6 +9,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get install -y \
         git \
         python3.10 \
+        python3.10-distutils \
         libglib2.0-0
 
 # Upgrade pip
