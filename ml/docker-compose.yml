@@ -1,0 +1,11 @@
+version: '3'
+services:
+  api:
+  # todo: add your image name here
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
