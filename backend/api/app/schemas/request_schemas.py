@@ -31,9 +31,10 @@ class AtmCurrency(Enum):
 
 
 class SelectAtm(BaseModel):
-    latitude: float
-    longitude: float
-
+    cash: Optional[str] = None
+    type: Optional[str] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
 
 
 class DepartmentServices(Enum):
@@ -41,21 +42,21 @@ class DepartmentServices(Enum):
     open_deposit = "open_deposit"
     deposit_boxes = "deposit_boxes"
     credit = "credit"
-    letter_of_credit = "letter_of_credit"
+    safe_deposit_box_rental = "safe_deposit_box_rental"
     pension = "pension"
     investment = "investment"
     mortgage = "mortgage"
-    car_loan = "car_loan"
+    autocredit = "autocredit"
     other = "other"
 
 
 class SelectDepartment(BaseModel):
     latitude: float
     longitude: float
-    is_disabled: bool
-    is_person: bool
-    is_juridical: bool
-    is_prime: bool
+    is_disabled: bool = False
+    is_person: bool = False
+    is_juridical: bool = False
+    is_prime: bool = False
     service: DepartmentServices
 
 
