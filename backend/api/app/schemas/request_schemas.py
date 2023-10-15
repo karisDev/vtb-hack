@@ -30,7 +30,7 @@ class AtmCurrency(Enum):
     cny = "cny"
 
 
-class FindAtm(BaseModel):
+class SelectAtm(BaseModel):
     latitude: float
     longitude: float
     service: AtmServices
@@ -57,10 +57,17 @@ class DepartmentServices(Enum):
     other = "other"
 
 
-class FindDepartment(BaseModel):
+class SelectDepartment(BaseModel):
     latitude: float
     longitude: float
     is_immobile: bool
     is_prime: bool
     client_type: ClientType
     service: DepartmentServices
+
+
+class SelectRoute(BaseModel):
+    latitude_from: float
+    longitude_from: float
+    latitude_to: float
+    longitude_to: float

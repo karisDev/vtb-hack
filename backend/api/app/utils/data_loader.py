@@ -1,5 +1,4 @@
 import csv
-from app.models.db_models import Atm, Department
 
 
 def load_atms() -> list:
@@ -9,13 +8,12 @@ def load_atms() -> list:
     with open(csv_file, mode="r") as file:
         csv_reader = csv.DictReader(file)
 
-        # Iterate through each row in the CSV file
         for row in csv_reader:
             data_list.append(dict(row))
 
     for d in data_list:
         d.pop("")
-    
+
     print(data_list)
 
     return data_list
@@ -28,7 +26,6 @@ def load_departments() -> list:
     with open(csv_file, mode="r") as file:
         csv_reader = csv.DictReader(file)
 
-        # Iterate through each row in the CSV file
         for row in csv_reader:
             data_list.append(dict(row))
 

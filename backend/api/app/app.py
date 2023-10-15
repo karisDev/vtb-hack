@@ -1,6 +1,5 @@
 from app.config import log
 from app.core.database import init_db
-from app.config import settings
 from app.utils.data_loader import load_atms, load_departments
 from app.models.db_models import Atm, Department
 
