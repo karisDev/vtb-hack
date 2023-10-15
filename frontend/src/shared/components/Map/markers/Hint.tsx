@@ -21,10 +21,14 @@ export function HintBase() {
               {hint.address}
             </p>
             <div className="flex items-center gap-1 text-text-primary font-light text-xs mt-2">
-              <ArrowSvg className="w-3 h-3" />
-              <p>{hint.distanceToLocationMeters} метров</p>
-              <ClockSvg className="w-3 h-3 ml-4" />
-              <p className="mr-4">{hint.timeToLocationSeconds} минут</p>
+              {hint.distanceToLocationMeters && (
+                <>
+                  <ArrowSvg className="w-3 h-3" />
+                  <p>{hint.distanceToLocationMeters} метров</p>
+                </>
+              )}
+              <ClockSvg className="w-3 h-3" />
+              <p className="mr-4">{hint.timeToLocationSeconds} Открыто</p>
               <LoadIndicator className="ml-auto" load={hint.load} size={12} />
               <p>
                 {hint.load &&

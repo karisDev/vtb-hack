@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import datetime
 
-
 def load_df(path):
     return pd.read_csv(path, index_col='Unnamed: 0')
     
@@ -21,7 +20,13 @@ def get_new_info(df):
     df = normalize_column(df, 'time_in_department')
     df = normalize_column(df, 'KPI')
     return df
-
+    
+def parse_time(hour):
+    if '.' in hour:
+        return datetime.time(int(hour.split('.')[0]), int(hour.split('.')[1]))
+    elif ':' in hour:
+        return datetime.time(int(hour.split(':')[0]), int(hour.split(':')[1]))
+        
 def filter_open_now(df):
     day_names = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс']
     today_day_name = day_names[datetime.datetime.now().weekday()]

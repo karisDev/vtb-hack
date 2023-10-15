@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 const ymaps3Reactify = await ymaps3.import("@yandex/ymaps3-reactify");

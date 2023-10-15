@@ -1,4 +1,4 @@
-import { ElementRef, useCallback, useEffect, useRef } from "react";
+import { ElementRef, useCallback, useEffect, useMemo, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { LngLat } from "@yandex/ymaps3-types";
 import { Common, Hint, Controls, Cluster as Clusters } from "./map-context";
@@ -31,20 +31,21 @@ export const Map = observer(() => {
     }, 1000);
   }, []);
 
+  const location = useMemo(
+    () => ({
+      center: [37.64, 55.76] as LngLat,
+      zoom: 11,
+    }),
+    []
+  );
+
   return (
     <>
       {/* <div id={id} key="1" className="w-full h-full"></div>
     <button className="absolute top-5 left-8" onClick={() => vm.addMarker([55.76, 37.64])
     }>Добавить маркер</button> */}
       <div className="w-full h-full text-text-primary">
-        <Common.YMap
-          ref={mapRef}
-          location={{
-            center: [37.64, 55.76] as LngLat,
-            zoom: 11,
-          }}
-          mode="vector"
-        >
+        <Common.YMap ref={mapRef} location={location} mode="vector">
           <Common.YMapDefaultSchemeLayer />
           <Common.YMapDefaultFeaturesLayer />
           <Common.YMapFeatureDataSource id="clusterer-source" />

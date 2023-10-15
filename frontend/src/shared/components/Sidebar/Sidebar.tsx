@@ -5,7 +5,7 @@ import { FCVM } from "@/utils/vm";
 import { observer } from "mobx-react-lite";
 import useIsMobile from "@/hooks/useWindowSize";
 import ChevronSvg from "./assets/chevron.svg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useClickOutside from "@/hooks/useClickOutside";
 import MenuSvg from "./assets/menu.svg";
